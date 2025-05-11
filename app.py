@@ -53,9 +53,10 @@ def run_ml_app():
         result= predict(gender, married, dependent, education, self_employed, applicant_income, coApplicant_income
                          ,loan_amount, loan_amount_term, credit_history, property_area)
         if result == 'Eligible':
-            st.success(f"you're {result} for the loan!")
+            st.success(f"you are {result} for the loan!")
         else:
-            st.error(f"you're {result} for the loan!")
+            st.error(f"you are {result} for the loan!")
+
 def predict(gender, married, dependent, education, self_employed, applicant_income, coApplicant_income
                          ,loan_amount, loan_amount_term, credit_history, property_area):
     
@@ -65,6 +66,7 @@ def predict(gender, married, dependent, education, self_employed, applicant_inco
     edu = 0 if education == 'Graduate' else 1
     sem = 0 if self_employed == 'Yes' else 1
     pro = 0 if property_area == 'Semiurban' else 1 if property_area == 'Urban' else 2
+    
     #Making prediction
     prediction = Logistic_Regression_Model.predict(
         [[gen, mar, dependent, edu, sem, applicant_income, coApplicant_income, 
